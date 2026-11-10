@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <script src="https://code.jquery-3.7.1.min.js"></script>
     <style type="text/css">
         table {
             border-collapse: collapse;
@@ -504,6 +505,67 @@
     </table>
 
 
+<script src="https://code.jquery-3.7.1.min.js"></script>
+<script>
+let clickElements = [];
+let elements = document.getElementsByTagName("tr");
+let selectionText = document.getElementById("selection");
+function refreshSection(Count){
+        let selectionText = document.getElementById("selection");
+        if(Count > 1)
+            selectionText.innerText = Count + "élément sélectionnés"
+        else
+            selectionText.innerText = Count + "élément sélectionné"
+       
+       }
+function changeStyle(element, backgroundColor, fontWeight, border){
+    if(backgroundColor !== null){
+        element.style.backgroundColor = backgroundColor;
+    }
+    if(fontWeight !== null){
+        element.style.fontWeight = fontWeight;
+    }
+    if(border !== null){
+        element.style.border = border;
+    }
+}
+
+
+
+for(let i = 0;i<elements.length;i++){
+
+    let element = elements[i];
+
+        
+
+        element.addEventListener("click", function(event){
+
+        let target = this;
+        let targetIndex = clickElements.indexOf(target);
+       
+        
+        if(targetIndex === -1){
+
+            changeStyle(target, "lightblue", 900, null);
+            clickElements.push(target);
+
+            refreshSection(clickElements.length)
+        }
+        else{
+
+            changeStyle(target, "white", 500, null);
+            clickElements.splice(targetIndex,1);
+
+            refreshSection(clickElements.length)
+        }
+        
+    });
+    element.addEventListener("mouseover", function () {this.style.border = "1px solid #888";});
+
+    element.addEventListener("mouseout", function () {this.style.border = ""});
+}
+
+</script>
 
 </body>
 
