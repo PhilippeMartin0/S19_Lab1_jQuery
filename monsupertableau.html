@@ -510,12 +510,13 @@
 let clickElements = [];
 let elements = document.getElementsByTagName("tr");
 let selectionText = document.getElementById("selection");
+
 function refreshSection(Count){
         let selectionText = document.getElementById("selection");
         if(Count > 1)
-            selectionText.innerText = Count + "élément sélectionnés"
+            selectionText.innerText = Count + " élément sélectionnés"
         else
-            selectionText.innerText = Count + "élément sélectionné"
+            selectionText.innerText = Count + " élément sélectionné"
        
        }
 function changeStyle(element, backgroundColor, fontWeight, border){
